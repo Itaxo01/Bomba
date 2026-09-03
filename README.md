@@ -22,7 +22,7 @@ embora isso geralmente só seja feito antes de competições importantes, e não
 Os algoritmos que não estão incluídos no pdf ficam comentados em `chapter.tex`.
 
 Para construir a Bomba, digite `make bomba` (ou `make fast`) em uma máquina \*nix -- isso vai atualizar o `bomba.pdf`.
-(Windows também pode funcionar, mas não foi testado.) `doc/README` tem mais algumas notas sobre isso.
+(Windows também pode funcionar, mas não foi testado.). É necessário ter o pdflatex e uma série de packages adicionais para o latex, `doc/README` tem mais algumas notas sobre isso.
 
 Dicas:
 1. Confira o que é excluído por padrão rodando `make showexcluded`.
@@ -44,7 +44,6 @@ foi adicionado, uma descrição do algoritmo, seu status de teste, e preferencia
 fonte, licença e complexidade de tempo.
 
 O bomba.pdf deve ser mantido em 25 páginas + capa.
-Ocasionalmente o bomba.pdf gerado é commitado no repositório por conveniência, mas não com muita frequência porque isso deixa as operações do git mais lentas.
 
 ## Testes
 

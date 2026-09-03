@@ -3,19 +3,20 @@
  * Date: 2026-07-09
  * License: CC0
  * Source: https://github.com/scipy/scipy/blob/main/scipy/optimize/rectangular_lsap/rectangular_lsap.cpp
- * Description: Given a weighted bipartite graph, matches every node on
- * the left with a node on the right such that no
- * nodes are in two matchings and the sum of the edge weights is minimal. Takes
- * cost[N][M], where cost[i][j] = cost for L[i] to be matched with R[j], and
- * returns (min cost, match), where L[i] is matched with
- * R[match[i]]. Negate costs for max cost. Requires $N \le M$.
+ * Description: Para um grafo bipartido com pesos, devolve o match em que
+ * cada nó da direita fica ligado a um nó da esquerda, sem que nenhum nó
+ * fique em dois matches, e o custo da soma das arrestas é mínimo. 
+ * A entrada é uma matriz cost[N][M], cost[i][j] = custo da arresta que liga i e j
+ * retorna (min cost, match), onde L[i] fica ligado com
+ * R[match[i]]. (-1)cost[N][M] = Max Cost. Teoricamente não exige valores positivos
+ * Requer $N \le M$ (Basta manipular para tal).
  * Time: O(N^2M)
  * Status: Tested on kattis:cordonbleu, kattis:engaging, stress-tested
  */
 #pragma once
 
 template<class T>
-pair<T, vi> weightedMatching(vector<vector<T>> &C) {
+pair<T, vi> hungaro(vector<vector<T>> &C) {
 	int i = sz(C), m = i ? sz(C[0]) : 0, c, s, r;
 	vector<T> dist(m), pot(m);
 	vi match(i), rev(m, -1), cols(m), prev(m);
