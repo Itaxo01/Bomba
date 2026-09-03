@@ -1,6 +1,6 @@
-% This file contains LaTeX macros for KACTL
+% This file contains LaTeX macros for Bomba
 % License: CC0
-\ProvidesPackage{kactlpkg}
+\ProvidesPackage{bombapkg}
 
 \usepackage[utf8]{inputenc}             % Encoding UTF-8
 \usepackage{listings}                   % Source code listings
@@ -48,8 +48,8 @@
 }
 
 % Some default config
-\subtitle{{\tiny new}KACTL}
-\title{KTH Algorithm Competition Template Library}
+\subtitle{{\tiny new}Bomba}
+\title{Biblioteca de templates de algoritmos da UFSC}
 \newcommand{\PDFColor}{0}
 \def\@builddir{build}
 
@@ -65,7 +65,7 @@
 
 % Remove temp files from old failed runs
 \AtBeginDocument{\immediate\write18{rm -f \@builddir/header.tmp}}
-\AtEndDocument{\immediate\write18{rm -f \@builddir/header.tmp}\immediate\write18{rm -f \@builddir/header2.tmp}\immediate\write18{rm -f \@builddir/kactl.tmp}}
+\AtEndDocument{\immediate\write18{rm -f \@builddir/header.tmp}\immediate\write18{rm -f \@builddir/header2.tmp}\immediate\write18{rm -f \@builddir/bomba.tmp}}
 
 % Include a list of source files at the top of every page. For the purpose
 % of recording those, we use eTeX marks. (We can't just append data directly to
@@ -236,7 +236,7 @@
 	\pagestyle{fancy}
 }
 
-\newcommand{\kactlref}[1]{
+\newcommand{\bombaref}[1]{
 	\ifthenelse{\boolean{appendixmode}}{}{
 		\ifnum \value{section} > 0
 			\addcontentsline{ptc}{subsection}{\texttt{#1}\hspace{0.2em}}
@@ -258,7 +258,7 @@
   \endgroup
 }
 
-\newcommand{\kactlimport}[2][]{ % Using empty default parameter
+\newcommand{\bombaimport}[2][]{ % Using empty default parameter
 	\leftcaption{}\rightcaption{}
 	\setboolean{hasdescription}{false}
 	\setboolean{hasusage}{false}
@@ -268,33 +268,33 @@
 	\myneedspace{3\baselineskip}
 	\penalty-100
 	{\large #2}
-	\immediate\write18{rm -f \@builddir/kactl.tmp} % Don't include old kactl.tmp on failure.
-	\immediate\write18{python3 content/tex/preprocessor.py -i "\@kactldir/#2" -o \@builddir/kactl.tmp #1}
-	\immediate\input{\@builddir/kactl.tmp}
+	\immediate\write18{rm -f \@builddir/bomba.tmp} % Don't include old bomba.tmp on failure.
+	\immediate\write18{python3 content/tex/preprocessor.py -i "\@bombadir/#2" -o \@builddir/bomba.tmp #1}
+	\immediate\input{\@builddir/bomba.tmp}
 }
 
 \newcommand{\import}[1]{
-	\input{"\@kactldir/#1"}
+	\input{"\@bombadir/#1"}
 }
 
-\newcommand{\kactlcontentdir}[1]{
-	\def\@kactlbasedir{#1}
-	\def\@kactldir{#1}
+\newcommand{\bombacontentdir}[1]{
+	\def\@bombabasedir{#1}
+	\def\@bombadir{#1}
 }
-\kactlcontentdir{.}
+\bombacontentdir{.}
 
-\newcommand{\kactlchapter}[1]{
-	\def\@kactldir{\@kactlbasedir/#1}
-	\input{"\@kactldir/chapter.tex"}
-	\def\@kactldir{\@kactlbasedir}
-}
-
-\newcommand{\kactlerror}[1]{
-	\PackageError{kactlpkg}{#1}{}
+\newcommand{\bombachapter}[1]{
+	\def\@bombadir{\@bombabasedir/#1}
+	\input{"\@bombadir/chapter.tex"}
+	\def\@bombadir{\@bombabasedir}
 }
 
-\newcommand{\kactlwarning}[1]{
-	\PackageWarning{kactlpkg}{#1}
+\newcommand{\bombaerror}[1]{
+	\PackageError{bombapkg}{#1}{}
+}
+
+\newcommand{\bombawarning}[1]{
+	\PackageWarning{bombapkg}{#1}
 }
 
 \newboolean{hasleftcaption}

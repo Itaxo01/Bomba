@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # encoding: utf-8
 
-# Source code preprocessor for KACTL build process.
+# Source code preprocessor for Bomba build process.
 # License: CC0
 
 import sys
@@ -48,7 +48,7 @@ def ordoescape(input, esc=True):
 
 def addref(caption, outstream):
     caption = pathescape(caption).strip()
-    print(r"\kactlref{%s}" % caption, file=outstream)
+    print(r"\bombaref{%s}" % caption, file=outstream)
     with open('header.tmp', 'a') as f:
         f.write(caption + "\n")
 
@@ -149,16 +149,16 @@ def processwithcomments(caption, instream, outstream, listingslang):
         hash_script = 'hash'
         p = subprocess.Popen(['sh', 'content/contest/%s.sh' % hash_script], stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding="utf-8")
         hsh, _ = p.communicate(nsource)
-        hsh = hsh.split(None, 1)[0]
-        hsh = hsh + ', '
+        hsh = hsh.split(None, 1)
+        hsh = (hsh[0] + ', ') if hsh else ''
     else:
         hsh = ''
     # Produce output
     out = []
     if warning:
-        out.append(r"\kactlwarning{%s: %s}" % (caption, warning))
+        out.append(r"\bombawarning{%s: %s}" % (caption, warning))
     if error:
-        out.append(r"\kactlerror{%s: %s}" % (caption, error))
+        out.append(r"\bombaerror{%s: %s}" % (caption, error))
     else:
         addref(caption, outstream)
         if commands.get("Description"):
@@ -190,7 +190,7 @@ def processraw(caption, instream, outstream, listingslang = 'raw'):
         print(source, file=outstream)
         print(r"\end{lstlisting}", file=outstream)
     except:
-        print(r"\kactlerror{Could not read source.}", file=outstream)
+        print(r"\bombaerror{Could not read source.}", file=outstream)
 
 def parse_include(line):
     line = line.strip()

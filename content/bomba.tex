@@ -1,0 +1,36 @@
+\documentclass[9pt, a4paper, notitlepage]{extreport}
+\usepackage{bombapkg}
+\bombacontentdir{content}
+
+\university{UFSC}{Universidade Federal de Santa Catarina}{UFSC}
+\team{A decidir}{Kauan Elias Schneider Fank, Arthur...}
+% \contest{ACM-ICPC World Finals 2017}{May 24, 2017}
+\contest{\ }{\today}
+% \enablecolors
+
+\begin{document}
+	\maketeampage
+	% Small Bomba header on the first page:
+	% \maketitle{``One Last Time'' Edition}{\today}
+	\begin{multicols*}{3}
+	\thispagestyle{fancy}
+	% Table of contents, without subsections:
+	\setcounter{tocdepth}{0}
+	\tableofcontents
+
+	\bombachapter{contest}
+	\bombachapter{math}
+	\bombachapter{data-structures}
+	\bombachapter{numerical}
+	\bombachapter{number-theory}
+	\bombachapter{combinatorial}
+	\bombachapter{graph}
+	\bombachapter{geometry}
+	\bombachapter{strings}
+	\bombachapter{various}
+	\end{multicols*}
+
+	\begin{multicols*}{3}
+	\bombachapter{appendix}
+	\end{multicols*}
+\end{document}

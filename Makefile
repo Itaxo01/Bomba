@@ -3,35 +3,35 @@ export TEXINPUTS=.:content/tex/:
 export max_print_line = 1048576
 
 help:
-	@echo "This makefile builds KACTL (KTH Algorithm Competition Template Library)"
+	@echo "Esse makefile constrói a Bomba"
 	@echo ""
-	@echo "Available commands are:"
-	@echo "	make fast		- to build KACTL, quickly (only runs LaTeX once)"
-	@echo "	make kactl		- to build KACTL"
-	@echo "	make clean		- to clean up the build process"
-	@echo "	make veryclean		- to clean up and remove kactl.pdf"
-	@echo "	make test		- to run all the stress tests in stress-tests/"
-	@echo "	make test-compiles	- to test compiling all headers"
-	@echo "	make help		- to show this information"
-	@echo "	make showexcluded	- to show files that are not included in the doc"
+	@echo "Os comandos são:"
+	@echo "	make fast		- para construir a Bomba rápido (roda o LaTeX uma vez só)"
+	@echo "	make bomba		- para construir a Bomba"
+	@echo "	make clean		- para limpar o build"
+	@echo "	make veryclean		- para limpar e remover o bomba.pdf"
+	@echo "	make test		- para rodar todos os stress tests em stress-tests/"
+	@echo "	make test-compiles	- para testar a compilação de todos os headers"
+	@echo "	make help		- para mostrar esta informação"
+	@echo "	make showexcluded	- para mostrar os arquivos que não estão incluídos no doc"
 	@echo ""
-	@echo "For more information see the file 'doc/README'"
+	@echo "Para mais informações veja o arquivo 'doc/README'"
 
 fast: | build
-	$(LATEXCMD) content/kactl.tex </dev/null
-	cp build/kactl.pdf kactl.pdf
+	$(LATEXCMD) content/bomba.tex </dev/null
+	cp build/bomba.pdf bomba.pdf
 
-kactl: test-session.pdf | build
-	$(LATEXCMD) content/kactl.tex && $(LATEXCMD) content/kactl.tex
-	cp build/kactl.pdf kactl.pdf
+bomba: test-session.pdf | build
+	$(LATEXCMD) content/bomba.tex && $(LATEXCMD) content/bomba.tex
+	cp build/bomba.pdf bomba.pdf
 
 clean:
-	cd build && rm -f kactl.aux kactl.log kactl.tmp kactl.toc kactl.pdf kactl.ptc
+	cd build && rm -f bomba.aux bomba.log bomba.tmp bomba.toc bomba.pdf bomba.ptc
 
 veryclean: clean
-	rm -f kactl.pdf test-session.pdf
+	rm -f bomba.pdf test-session.pdf
 
-.PHONY: help fast kactl clean veryclean
+.PHONY: help fast bomba clean veryclean
 
 build:
 	mkdir -p build/
@@ -47,5 +47,5 @@ test-session.pdf: content/test-session/test-session.tex content/test-session/cha
 	cp build/test-session.pdf test-session.pdf
 
 showexcluded: build
-	grep -RoPh '^\s*\\kactlimport{\K.*' content/ | sed 's/.$$//' > build/headers_included
+	grep -RoPh '^\s*\\bombaimport{\K.*' content/ | sed 's/.$$//' > build/headers_included
 	find ./content -name "*.h" -o -name "*.py" -o -name "*.java" | grep -vFf build/headers_included
