@@ -24,6 +24,8 @@ Os algoritmos que não estão incluídos no pdf ficam comentados em `chapter.tex
 Para construir a Bomba, digite `make bomba` (ou `make fast`) em uma máquina \*nix -- isso vai atualizar o `bomba.pdf`.
 (Windows também pode funcionar, mas não foi testado.). É necessário ter o pdflatex e uma série de packages adicionais para o latex, `doc/README` tem mais algumas notas sobre isso.
 
+> Especifico do bomba (Não está no Kactl): Uma das tags no header é a de reviewed, com os nomes separados por virgula. Atualize após utilizar/modificar/entender um dos algoritmos. O comando make showreviewed/showunreviewed ajuda a saber quais dos códigos já foram revisados pela nossa equipe.
+
 Dicas:
 1. Confira o que é excluído por padrão rodando `make showexcluded`.
 A configuração padrão é escolhida para ser um equilíbrio razoável para iniciantes

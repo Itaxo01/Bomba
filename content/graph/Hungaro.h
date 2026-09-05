@@ -12,6 +12,7 @@
  * Requer $N \le M$ (Basta manipular para tal).
  * Time: O(N^2M)
  * Status: Tested on kattis:cordonbleu, kattis:engaging, stress-tested
+ * Reviewed: Kauan (05/09/26)
  */
 #pragma once
 
