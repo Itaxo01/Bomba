@@ -5,7 +5,7 @@
  * Description: Min-cost max-flow.
  *  Se os custos forem negativos, chame setpi após montar o grafo. Ciclos negativos não funcionam.
  *  Para obter o fluxo, some os valores de flow > 0 (reverse edge entra como flow negativo)
- * 	Uso: Monta o grafo com addEdge, setpi se necessário, maxflow(source, sink). Itere ed se necessário.
+ * 	uso: Monta o grafo com addEdge, setpi se necessário, maxflow(source, sink). Itere ed se necessário.
  * Status: Tested on kattis:mincostmaxflow, stress-tested against another implementation
  * Time: $O(F E \log(V))$ where F is max flow. $O(VE)$ for setpi.
  * Reviewed: Kauan (05/09/26)
